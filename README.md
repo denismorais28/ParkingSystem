@@ -1,6 +1,6 @@
 # ParkingSystem
 
-### Preparação do ambiente
+### System Preparation
 
 1º Rodar o comando 
 ```
