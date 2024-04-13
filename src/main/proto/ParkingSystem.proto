@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.smartparking.grpc";
+option java_outer_classname = "ParkingSystemServiceImpl";
+package ParkingSystem;
+
+// The greeting service definition.
+service ParkingManaged {
+  // Sends a greeting
+  rpc carCheckIn(Car) returns (Ticket) {
+
+  }
+
+  rpc CarCheckOut(Car) returns (Ticket) {
+  }
+}
+
+message Car{
+  string color = 1;
+  string licensePlate = 2;
+  string checkin = 3;
+  string checkout = 4;
+}
+
+message Ticket{
+  string color = 1;
+  string licensePlate = 2;
+  string checkin = 3;
+  string checkout = 4;
+  string price = 5;
+}
