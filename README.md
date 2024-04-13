@@ -1,18 +1,18 @@
 # ParkingSystem
 
-### Preparação do ambiente
+### System Preparation
 
-1º Rodar o comando 
+1º Run the command:
 ```
 mvn clean install
 ```
-2º Rodar o comando 
+2º Run the command:
 ```
 mvn clean compile
 ```
 
 
-Rodar comando para subir servidor:
+Run command to go up Server:
 ``` 
 mvn exec:java -Dexec.mainClass="com.smartparking.server.ParkingSystemServer" 
 ```
