@@ -4,21 +4,19 @@
 package com.smartparking.grpc;
 
 /**
- * Protobuf type {@code ParkingSystem.Car}
+ * Protobuf type {@code ParkingSystem.CarExit}
  */
-public  final class Car extends
+public  final class CarExit extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ParkingSystem.Car)
-    CarOrBuilder {
+    // @@protoc_insertion_point(message_implements:ParkingSystem.CarExit)
+    CarExitOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Car.newBuilder() to construct.
-  private Car(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CarExit.newBuilder() to construct.
+  private CarExit(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Car() {
-    color_ = "";
+  private CarExit() {
     licensePlate_ = "";
-    checkin_ = "";
     checkout_ = "";
   }
 
@@ -27,7 +25,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Car(
+  private CarExit(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -49,22 +47,10 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            color_ = s;
-            break;
-          }
-          case 18: {
-            java.lang.String s = input.readStringRequireUtf8();
-
             licensePlate_ = s;
             break;
           }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            checkin_ = s;
-            break;
-          }
-          case 34: {
+          case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
             checkout_ = s;
@@ -91,55 +77,21 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Car_descriptor;
+    return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarExit_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Car_fieldAccessorTable
+    return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarExit_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.smartparking.grpc.Car.class, com.smartparking.grpc.Car.Builder.class);
+            com.smartparking.grpc.CarExit.class, com.smartparking.grpc.CarExit.Builder.class);
   }
 
-  public static final int COLOR_FIELD_NUMBER = 1;
-  private volatile java.lang.Object color_;
-  /**
-   * <code>string color = 1;</code>
-   */
-  public java.lang.String getColor() {
-    java.lang.Object ref = color_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      color_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string color = 1;</code>
-   */
-  public com.google.protobuf.ByteString
-      getColorBytes() {
-    java.lang.Object ref = color_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      color_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int LICENSEPLATE_FIELD_NUMBER = 2;
+  public static final int LICENSEPLATE_FIELD_NUMBER = 1;
   private volatile java.lang.Object licensePlate_;
   /**
-   * <code>string licensePlate = 2;</code>
+   * <code>string licensePlate = 1;</code>
    */
   public java.lang.String getLicensePlate() {
     java.lang.Object ref = licensePlate_;
@@ -154,7 +106,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string licensePlate = 2;</code>
+   * <code>string licensePlate = 1;</code>
    */
   public com.google.protobuf.ByteString
       getLicensePlateBytes() {
@@ -170,44 +122,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int CHECKIN_FIELD_NUMBER = 3;
-  private volatile java.lang.Object checkin_;
-  /**
-   * <code>string checkin = 3;</code>
-   */
-  public java.lang.String getCheckin() {
-    java.lang.Object ref = checkin_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      checkin_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string checkin = 3;</code>
-   */
-  public com.google.protobuf.ByteString
-      getCheckinBytes() {
-    java.lang.Object ref = checkin_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      checkin_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int CHECKOUT_FIELD_NUMBER = 4;
+  public static final int CHECKOUT_FIELD_NUMBER = 2;
   private volatile java.lang.Object checkout_;
   /**
-   * <code>string checkout = 4;</code>
+   * <code>string checkout = 2;</code>
    */
   public java.lang.String getCheckout() {
     java.lang.Object ref = checkout_;
@@ -222,7 +140,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string checkout = 4;</code>
+   * <code>string checkout = 2;</code>
    */
   public com.google.protobuf.ByteString
       getCheckoutBytes() {
@@ -252,17 +170,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getColorBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, color_);
-    }
     if (!getLicensePlateBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, licensePlate_);
-    }
-    if (!getCheckinBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, checkin_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, licensePlate_);
     }
     if (!getCheckoutBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, checkout_);
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, checkout_);
     }
     unknownFields.writeTo(output);
   }
@@ -273,17 +185,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getColorBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, color_);
-    }
     if (!getLicensePlateBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, licensePlate_);
-    }
-    if (!getCheckinBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, checkin_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, licensePlate_);
     }
     if (!getCheckoutBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, checkout_);
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, checkout_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -295,18 +201,14 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.smartparking.grpc.Car)) {
+    if (!(obj instanceof com.smartparking.grpc.CarExit)) {
       return super.equals(obj);
     }
-    com.smartparking.grpc.Car other = (com.smartparking.grpc.Car) obj;
+    com.smartparking.grpc.CarExit other = (com.smartparking.grpc.CarExit) obj;
 
     boolean result = true;
-    result = result && getColor()
-        .equals(other.getColor());
     result = result && getLicensePlate()
         .equals(other.getLicensePlate());
-    result = result && getCheckin()
-        .equals(other.getCheckin());
     result = result && getCheckout()
         .equals(other.getCheckout());
     result = result && unknownFields.equals(other.unknownFields);
@@ -320,12 +222,8 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + COLOR_FIELD_NUMBER;
-    hash = (53 * hash) + getColor().hashCode();
     hash = (37 * hash) + LICENSEPLATE_FIELD_NUMBER;
     hash = (53 * hash) + getLicensePlate().hashCode();
-    hash = (37 * hash) + CHECKIN_FIELD_NUMBER;
-    hash = (53 * hash) + getCheckin().hashCode();
     hash = (37 * hash) + CHECKOUT_FIELD_NUMBER;
     hash = (53 * hash) + getCheckout().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
@@ -333,69 +231,69 @@ private static final long serialVersionUID = 0L;
     return hash;
   }
 
-  public static com.smartparking.grpc.Car parseFrom(
+  public static com.smartparking.grpc.CarExit parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.smartparking.grpc.Car parseFrom(
+  public static com.smartparking.grpc.CarExit parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.smartparking.grpc.Car parseFrom(
+  public static com.smartparking.grpc.CarExit parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.smartparking.grpc.Car parseFrom(
+  public static com.smartparking.grpc.CarExit parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.smartparking.grpc.Car parseFrom(byte[] data)
+  public static com.smartparking.grpc.CarExit parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.smartparking.grpc.Car parseFrom(
+  public static com.smartparking.grpc.CarExit parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.smartparking.grpc.Car parseFrom(java.io.InputStream input)
+  public static com.smartparking.grpc.CarExit parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.smartparking.grpc.Car parseFrom(
+  public static com.smartparking.grpc.CarExit parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.smartparking.grpc.Car parseDelimitedFrom(java.io.InputStream input)
+  public static com.smartparking.grpc.CarExit parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.smartparking.grpc.Car parseDelimitedFrom(
+  public static com.smartparking.grpc.CarExit parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.smartparking.grpc.Car parseFrom(
+  public static com.smartparking.grpc.CarExit parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.smartparking.grpc.Car parseFrom(
+  public static com.smartparking.grpc.CarExit parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -408,7 +306,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.smartparking.grpc.Car prototype) {
+  public static Builder newBuilder(com.smartparking.grpc.CarExit prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -424,26 +322,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ParkingSystem.Car}
+   * Protobuf type {@code ParkingSystem.CarExit}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ParkingSystem.Car)
-      com.smartparking.grpc.CarOrBuilder {
+      // @@protoc_insertion_point(builder_implements:ParkingSystem.CarExit)
+      com.smartparking.grpc.CarExitOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Car_descriptor;
+      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarExit_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Car_fieldAccessorTable
+      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarExit_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.smartparking.grpc.Car.class, com.smartparking.grpc.Car.Builder.class);
+              com.smartparking.grpc.CarExit.class, com.smartparking.grpc.CarExit.Builder.class);
     }
 
-    // Construct using com.smartparking.grpc.Car.newBuilder()
+    // Construct using com.smartparking.grpc.CarExit.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -461,11 +359,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      color_ = "";
-
       licensePlate_ = "";
-
-      checkin_ = "";
 
       checkout_ = "";
 
@@ -475,17 +369,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Car_descriptor;
+      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarExit_descriptor;
     }
 
     @java.lang.Override
-    public com.smartparking.grpc.Car getDefaultInstanceForType() {
-      return com.smartparking.grpc.Car.getDefaultInstance();
+    public com.smartparking.grpc.CarExit getDefaultInstanceForType() {
+      return com.smartparking.grpc.CarExit.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.smartparking.grpc.Car build() {
-      com.smartparking.grpc.Car result = buildPartial();
+    public com.smartparking.grpc.CarExit build() {
+      com.smartparking.grpc.CarExit result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -493,11 +387,9 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.smartparking.grpc.Car buildPartial() {
-      com.smartparking.grpc.Car result = new com.smartparking.grpc.Car(this);
-      result.color_ = color_;
+    public com.smartparking.grpc.CarExit buildPartial() {
+      com.smartparking.grpc.CarExit result = new com.smartparking.grpc.CarExit(this);
       result.licensePlate_ = licensePlate_;
-      result.checkin_ = checkin_;
       result.checkout_ = checkout_;
       onBuilt();
       return result;
@@ -537,26 +429,18 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.smartparking.grpc.Car) {
-        return mergeFrom((com.smartparking.grpc.Car)other);
+      if (other instanceof com.smartparking.grpc.CarExit) {
+        return mergeFrom((com.smartparking.grpc.CarExit)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.smartparking.grpc.Car other) {
-      if (other == com.smartparking.grpc.Car.getDefaultInstance()) return this;
-      if (!other.getColor().isEmpty()) {
-        color_ = other.color_;
-        onChanged();
-      }
+    public Builder mergeFrom(com.smartparking.grpc.CarExit other) {
+      if (other == com.smartparking.grpc.CarExit.getDefaultInstance()) return this;
       if (!other.getLicensePlate().isEmpty()) {
         licensePlate_ = other.licensePlate_;
-        onChanged();
-      }
-      if (!other.getCheckin().isEmpty()) {
-        checkin_ = other.checkin_;
         onChanged();
       }
       if (!other.getCheckout().isEmpty()) {
@@ -578,11 +462,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.smartparking.grpc.Car parsedMessage = null;
+      com.smartparking.grpc.CarExit parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.smartparking.grpc.Car) e.getUnfinishedMessage();
+        parsedMessage = (com.smartparking.grpc.CarExit) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -592,78 +476,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object color_ = "";
-    /**
-     * <code>string color = 1;</code>
-     */
-    public java.lang.String getColor() {
-      java.lang.Object ref = color_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        color_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string color = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getColorBytes() {
-      java.lang.Object ref = color_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        color_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string color = 1;</code>
-     */
-    public Builder setColor(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      color_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string color = 1;</code>
-     */
-    public Builder clearColor() {
-      
-      color_ = getDefaultInstance().getColor();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string color = 1;</code>
-     */
-    public Builder setColorBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      color_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object licensePlate_ = "";
     /**
-     * <code>string licensePlate = 2;</code>
+     * <code>string licensePlate = 1;</code>
      */
     public java.lang.String getLicensePlate() {
       java.lang.Object ref = licensePlate_;
@@ -678,7 +493,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string licensePlate = 2;</code>
+     * <code>string licensePlate = 1;</code>
      */
     public com.google.protobuf.ByteString
         getLicensePlateBytes() {
@@ -694,7 +509,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string licensePlate = 2;</code>
+     * <code>string licensePlate = 1;</code>
      */
     public Builder setLicensePlate(
         java.lang.String value) {
@@ -707,7 +522,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string licensePlate = 2;</code>
+     * <code>string licensePlate = 1;</code>
      */
     public Builder clearLicensePlate() {
       
@@ -716,7 +531,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string licensePlate = 2;</code>
+     * <code>string licensePlate = 1;</code>
      */
     public Builder setLicensePlateBytes(
         com.google.protobuf.ByteString value) {
@@ -730,78 +545,9 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object checkin_ = "";
-    /**
-     * <code>string checkin = 3;</code>
-     */
-    public java.lang.String getCheckin() {
-      java.lang.Object ref = checkin_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        checkin_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string checkin = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCheckinBytes() {
-      java.lang.Object ref = checkin_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        checkin_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string checkin = 3;</code>
-     */
-    public Builder setCheckin(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      checkin_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string checkin = 3;</code>
-     */
-    public Builder clearCheckin() {
-      
-      checkin_ = getDefaultInstance().getCheckin();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string checkin = 3;</code>
-     */
-    public Builder setCheckinBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      checkin_ = value;
-      onChanged();
-      return this;
-    }
-
     private java.lang.Object checkout_ = "";
     /**
-     * <code>string checkout = 4;</code>
+     * <code>string checkout = 2;</code>
      */
     public java.lang.String getCheckout() {
       java.lang.Object ref = checkout_;
@@ -816,7 +562,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string checkout = 4;</code>
+     * <code>string checkout = 2;</code>
      */
     public com.google.protobuf.ByteString
         getCheckoutBytes() {
@@ -832,7 +578,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string checkout = 4;</code>
+     * <code>string checkout = 2;</code>
      */
     public Builder setCheckout(
         java.lang.String value) {
@@ -845,7 +591,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string checkout = 4;</code>
+     * <code>string checkout = 2;</code>
      */
     public Builder clearCheckout() {
       
@@ -854,7 +600,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string checkout = 4;</code>
+     * <code>string checkout = 2;</code>
      */
     public Builder setCheckoutBytes(
         com.google.protobuf.ByteString value) {
@@ -880,41 +626,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ParkingSystem.Car)
+    // @@protoc_insertion_point(builder_scope:ParkingSystem.CarExit)
   }
 
-  // @@protoc_insertion_point(class_scope:ParkingSystem.Car)
-  private static final com.smartparking.grpc.Car DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:ParkingSystem.CarExit)
+  private static final com.smartparking.grpc.CarExit DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.smartparking.grpc.Car();
+    DEFAULT_INSTANCE = new com.smartparking.grpc.CarExit();
   }
 
-  public static com.smartparking.grpc.Car getDefaultInstance() {
+  public static com.smartparking.grpc.CarExit getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Car>
-      PARSER = new com.google.protobuf.AbstractParser<Car>() {
+  private static final com.google.protobuf.Parser<CarExit>
+      PARSER = new com.google.protobuf.AbstractParser<CarExit>() {
     @java.lang.Override
-    public Car parsePartialFrom(
+    public CarExit parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Car(input, extensionRegistry);
+      return new CarExit(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Car> parser() {
+  public static com.google.protobuf.Parser<CarExit> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Car> getParserForType() {
+  public com.google.protobuf.Parser<CarExit> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.smartparking.grpc.Car getDefaultInstanceForType() {
+  public com.smartparking.grpc.CarExit getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 

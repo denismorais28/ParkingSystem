@@ -3,8 +3,8 @@
 
 package com.smartparking.grpc;
 
-public interface TicketOrBuilder extends
-    // @@protoc_insertion_point(interface_extends:ParkingSystem.Ticket)
+public interface CarEntranceOrBuilder extends
+    // @@protoc_insertion_point(interface_extends:ParkingSystem.CarEntrance)
     com.google.protobuf.MessageOrBuilder {
 
   /**
@@ -26,24 +26,4 @@ public interface TicketOrBuilder extends
    */
   com.google.protobuf.ByteString
       getCheckinBytes();
-
-  /**
-   * <code>string checkout = 3;</code>
-   */
-  java.lang.String getCheckout();
-  /**
-   * <code>string checkout = 3;</code>
-   */
-  com.google.protobuf.ByteString
-      getCheckoutBytes();
-
-  /**
-   * <code>string price = 4;</code>
-   */
-  java.lang.String getPrice();
-  /**
-   * <code>string price = 4;</code>
-   */
-  com.google.protobuf.ByteString
-      getPriceBytes();
 }

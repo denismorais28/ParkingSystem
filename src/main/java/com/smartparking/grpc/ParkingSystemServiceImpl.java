@@ -15,15 +15,45 @@ public final class ParkingSystemServiceImpl {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_ParkingSystem_Car_descriptor;
+    internal_static_ParkingSystem_Empety_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_ParkingSystem_Car_fieldAccessorTable;
+      internal_static_ParkingSystem_Empety_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParkingSystem_Parking_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParkingSystem_Parking_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParkingSystem_FinanceDay_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParkingSystem_FinanceDay_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParkingSystem_Request_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParkingSystem_Request_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParkingSystem_CarEntrance_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParkingSystem_CarEntrance_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParkingSystem_CarExit_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParkingSystem_CarExit_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
     internal_static_ParkingSystem_Ticket_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ParkingSystem_Ticket_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParkingSystem_Status_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParkingSystem_Status_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -33,17 +63,38 @@ public final class ParkingSystemServiceImpl {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\023ParkingSystem.proto\022\rParkingSystem\"M\n\003" +
-      "Car\022\r\n\005color\030\001 \001(\t\022\024\n\014licensePlate\030\002 \001(\t" +
-      "\022\017\n\007checkin\030\003 \001(\t\022\020\n\010checkout\030\004 \001(\t\"_\n\006T" +
-      "icket\022\r\n\005color\030\001 \001(\t\022\024\n\014licensePlate\030\002 \001" +
-      "(\t\022\017\n\007checkin\030\003 \001(\t\022\020\n\010checkout\030\004 \001(\t\022\r\n" +
-      "\005price\030\005 \001(\t2\207\001\n\016ParkingManaged\0229\n\ncarCh" +
-      "eckIn\022\022.ParkingSystem.Car\032\025.ParkingSyste" +
-      "m.Ticket\"\000\022:\n\013CarCheckOut\022\022.ParkingSyste" +
-      "m.Car\032\025.ParkingSystem.Ticket\"\000B3\n\025com.sm" +
-      "artparking.grpcB\030ParkingSystemServiceImp" +
-      "lP\001b\006proto3"
+      "\n\023ParkingSystem.proto\022\rParkingSystem\"\010\n\006" +
+      "Empety\"=\n\007Parking\022\030\n\020vancancyQuantity\030\001 " +
+      "\001(\t\022\030\n\020openingCashValue\030\002 \001(\t\"1\n\nFinance" +
+      "Day\022\023\n\013CarQuantity\030\001 \001(\t\022\016\n\006amount\030\002 \001(\t" +
+      "\"\027\n\007Request\022\014\n\004text\030\001 \001(\t\"4\n\013CarEntrance" +
+      "\022\024\n\014licensePlate\030\001 \001(\t\022\017\n\007checkin\030\002 \001(\t\"" +
+      "1\n\007CarExit\022\024\n\014licensePlate\030\001 \001(\t\022\020\n\010chec" +
+      "kout\030\002 \001(\t\"P\n\006Ticket\022\024\n\014licensePlate\030\001 \001" +
+      "(\t\022\017\n\007checkin\030\002 \001(\t\022\020\n\010checkout\030\003 \001(\t\022\r\n" +
+      "\005price\030\004 \001(\t\"\030\n\006Status\022\016\n\006status\030\001 \001(\t2\337" +
+      "\003\n\016ParkingManaged\022>\n\013ParkingOpen\022\026.Parki" +
+      "ngSystem.Parking\032\025.ParkingSystem.Empety\"" +
+      "\000\022A\n\ncarCheckIn\022\032.ParkingSystem.CarEntra" +
+      "nce\032\025.ParkingSystem.Ticket\"\000\022>\n\013CarCheck" +
+      "Out\022\026.ParkingSystem.CarExit\032\025.ParkingSys" +
+      "tem.Ticket\"\000\022A\n\017CheckIfItIsFull\022\025.Parkin" +
+      "gSystem.Status\032\025.ParkingSystem.Status\"\000\022" +
+      "A\n\017CheckOutPaymant\022\025.ParkingSystem.Ticke" +
+      "t\032\025.ParkingSystem.Ticket\"\000\022E\n\016ParkingClo" +
+      "sure\022\026.ParkingSystem.Request\032\031.ParkingSy" +
+      "stem.FinanceDay\"\000\022=\n\006report\022\026.ParkingSys" +
+      "tem.Request\032\031.ParkingSystem.FinanceDay\"\000" +
+      "2\320\002\n\007Finance\0229\n\007payment\022\025.ParkingSystem." +
+      "Ticket\032\025.ParkingSystem.Ticket\"\000\022G\n\025addCa" +
+      "rToPaymentRecord\022\025.ParkingSystem.Ticket\032" +
+      "\025.ParkingSystem.Ticket\"\000\022I\n\023PaymentRecor" +
+      "dReport\022\025.ParkingSystem.Empety\032\031.Parking" +
+      "System.FinanceDay\"\000\022=\n\007closure\022\025.Parking" +
+      "System.Empety\032\031.ParkingSystem.FinanceDay" +
+      "\"\000\0227\n\004open\022\026.ParkingSystem.Parking\032\025.Par" +
+      "kingSystem.Empety\"\000B3\n\025com.smartparking." +
+      "grpcB\030ParkingSystemServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -57,18 +108,54 @@ public final class ParkingSystemServiceImpl {
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         }, assigner);
-    internal_static_ParkingSystem_Car_descriptor =
+    internal_static_ParkingSystem_Empety_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_ParkingSystem_Car_fieldAccessorTable = new
+    internal_static_ParkingSystem_Empety_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_ParkingSystem_Car_descriptor,
-        new java.lang.String[] { "Color", "LicensePlate", "Checkin", "Checkout", });
-    internal_static_ParkingSystem_Ticket_descriptor =
+        internal_static_ParkingSystem_Empety_descriptor,
+        new java.lang.String[] { });
+    internal_static_ParkingSystem_Parking_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_ParkingSystem_Parking_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParkingSystem_Parking_descriptor,
+        new java.lang.String[] { "VancancyQuantity", "OpeningCashValue", });
+    internal_static_ParkingSystem_FinanceDay_descriptor =
+      getDescriptor().getMessageTypes().get(2);
+    internal_static_ParkingSystem_FinanceDay_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParkingSystem_FinanceDay_descriptor,
+        new java.lang.String[] { "CarQuantity", "Amount", });
+    internal_static_ParkingSystem_Request_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ParkingSystem_Request_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParkingSystem_Request_descriptor,
+        new java.lang.String[] { "Text", });
+    internal_static_ParkingSystem_CarEntrance_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_ParkingSystem_CarEntrance_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParkingSystem_CarEntrance_descriptor,
+        new java.lang.String[] { "LicensePlate", "Checkin", });
+    internal_static_ParkingSystem_CarExit_descriptor =
+      getDescriptor().getMessageTypes().get(5);
+    internal_static_ParkingSystem_CarExit_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParkingSystem_CarExit_descriptor,
+        new java.lang.String[] { "LicensePlate", "Checkout", });
+    internal_static_ParkingSystem_Ticket_descriptor =
+      getDescriptor().getMessageTypes().get(6);
     internal_static_ParkingSystem_Ticket_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParkingSystem_Ticket_descriptor,
-        new java.lang.String[] { "Color", "LicensePlate", "Checkin", "Checkout", "Price", });
+        new java.lang.String[] { "LicensePlate", "Checkin", "Checkout", "Price", });
+    internal_static_ParkingSystem_Status_descriptor =
+      getDescriptor().getMessageTypes().get(7);
+    internal_static_ParkingSystem_Status_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParkingSystem_Status_descriptor,
+        new java.lang.String[] { "Status", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

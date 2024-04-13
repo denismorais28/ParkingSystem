@@ -1,5 +1,6 @@
 package com.smartparking.server;
 
+import com.smartparking.grpc.VancancyManagementServiceImpl;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 
@@ -10,7 +11,8 @@ public class ParkingSystemServer {
         // Create a gRPC server and start it
         try {
             Server server = ServerBuilder.forPort(8081)
-                    .addService(new ParkingSystemServiceImpl())
+                    .addService(new ParkingManagedServiceImpl())
+//                    .addService(new VancancyManagementServiceImpl())
                     .build();
 
             server.start();

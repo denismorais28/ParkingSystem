@@ -4,22 +4,20 @@
 package com.smartparking.grpc;
 
 /**
- * Protobuf type {@code ParkingSystem.Ticket}
+ * Protobuf type {@code ParkingSystem.CarEntrance}
  */
-public  final class Ticket extends
+public  final class CarEntrance extends
     com.google.protobuf.GeneratedMessageV3 implements
-    // @@protoc_insertion_point(message_implements:ParkingSystem.Ticket)
-    TicketOrBuilder {
+    // @@protoc_insertion_point(message_implements:ParkingSystem.CarEntrance)
+    CarEntranceOrBuilder {
 private static final long serialVersionUID = 0L;
-  // Use Ticket.newBuilder() to construct.
-  private Ticket(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+  // Use CarEntrance.newBuilder() to construct.
+  private CarEntrance(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
     super(builder);
   }
-  private Ticket() {
+  private CarEntrance() {
     licensePlate_ = "";
     checkin_ = "";
-    checkout_ = "";
-    price_ = "";
   }
 
   @java.lang.Override
@@ -27,7 +25,7 @@ private static final long serialVersionUID = 0L;
   getUnknownFields() {
     return this.unknownFields;
   }
-  private Ticket(
+  private CarEntrance(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
@@ -58,18 +56,6 @@ private static final long serialVersionUID = 0L;
             checkin_ = s;
             break;
           }
-          case 26: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            checkout_ = s;
-            break;
-          }
-          case 34: {
-            java.lang.String s = input.readStringRequireUtf8();
-
-            price_ = s;
-            break;
-          }
           default: {
             if (!parseUnknownFieldProto3(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -91,15 +77,15 @@ private static final long serialVersionUID = 0L;
   }
   public static final com.google.protobuf.Descriptors.Descriptor
       getDescriptor() {
-    return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Ticket_descriptor;
+    return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarEntrance_descriptor;
   }
 
   @java.lang.Override
   protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internalGetFieldAccessorTable() {
-    return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Ticket_fieldAccessorTable
+    return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarEntrance_fieldAccessorTable
         .ensureFieldAccessorsInitialized(
-            com.smartparking.grpc.Ticket.class, com.smartparking.grpc.Ticket.Builder.class);
+            com.smartparking.grpc.CarEntrance.class, com.smartparking.grpc.CarEntrance.Builder.class);
   }
 
   public static final int LICENSEPLATE_FIELD_NUMBER = 1;
@@ -170,74 +156,6 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int CHECKOUT_FIELD_NUMBER = 3;
-  private volatile java.lang.Object checkout_;
-  /**
-   * <code>string checkout = 3;</code>
-   */
-  public java.lang.String getCheckout() {
-    java.lang.Object ref = checkout_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      checkout_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string checkout = 3;</code>
-   */
-  public com.google.protobuf.ByteString
-      getCheckoutBytes() {
-    java.lang.Object ref = checkout_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      checkout_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
-  public static final int PRICE_FIELD_NUMBER = 4;
-  private volatile java.lang.Object price_;
-  /**
-   * <code>string price = 4;</code>
-   */
-  public java.lang.String getPrice() {
-    java.lang.Object ref = price_;
-    if (ref instanceof java.lang.String) {
-      return (java.lang.String) ref;
-    } else {
-      com.google.protobuf.ByteString bs = 
-          (com.google.protobuf.ByteString) ref;
-      java.lang.String s = bs.toStringUtf8();
-      price_ = s;
-      return s;
-    }
-  }
-  /**
-   * <code>string price = 4;</code>
-   */
-  public com.google.protobuf.ByteString
-      getPriceBytes() {
-    java.lang.Object ref = price_;
-    if (ref instanceof java.lang.String) {
-      com.google.protobuf.ByteString b = 
-          com.google.protobuf.ByteString.copyFromUtf8(
-              (java.lang.String) ref);
-      price_ = b;
-      return b;
-    } else {
-      return (com.google.protobuf.ByteString) ref;
-    }
-  }
-
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -258,12 +176,6 @@ private static final long serialVersionUID = 0L;
     if (!getCheckinBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, checkin_);
     }
-    if (!getCheckoutBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 3, checkout_);
-    }
-    if (!getPriceBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, price_);
-    }
     unknownFields.writeTo(output);
   }
 
@@ -279,12 +191,6 @@ private static final long serialVersionUID = 0L;
     if (!getCheckinBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, checkin_);
     }
-    if (!getCheckoutBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, checkout_);
-    }
-    if (!getPriceBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, price_);
-    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -295,20 +201,16 @@ private static final long serialVersionUID = 0L;
     if (obj == this) {
      return true;
     }
-    if (!(obj instanceof com.smartparking.grpc.Ticket)) {
+    if (!(obj instanceof com.smartparking.grpc.CarEntrance)) {
       return super.equals(obj);
     }
-    com.smartparking.grpc.Ticket other = (com.smartparking.grpc.Ticket) obj;
+    com.smartparking.grpc.CarEntrance other = (com.smartparking.grpc.CarEntrance) obj;
 
     boolean result = true;
     result = result && getLicensePlate()
         .equals(other.getLicensePlate());
     result = result && getCheckin()
         .equals(other.getCheckin());
-    result = result && getCheckout()
-        .equals(other.getCheckout());
-    result = result && getPrice()
-        .equals(other.getPrice());
     result = result && unknownFields.equals(other.unknownFields);
     return result;
   }
@@ -324,78 +226,74 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getLicensePlate().hashCode();
     hash = (37 * hash) + CHECKIN_FIELD_NUMBER;
     hash = (53 * hash) + getCheckin().hashCode();
-    hash = (37 * hash) + CHECKOUT_FIELD_NUMBER;
-    hash = (53 * hash) + getCheckout().hashCode();
-    hash = (37 * hash) + PRICE_FIELD_NUMBER;
-    hash = (53 * hash) + getPrice().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
   }
 
-  public static com.smartparking.grpc.Ticket parseFrom(
+  public static com.smartparking.grpc.CarEntrance parseFrom(
       java.nio.ByteBuffer data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(
+  public static com.smartparking.grpc.CarEntrance parseFrom(
       java.nio.ByteBuffer data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(
+  public static com.smartparking.grpc.CarEntrance parseFrom(
       com.google.protobuf.ByteString data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(
+  public static com.smartparking.grpc.CarEntrance parseFrom(
       com.google.protobuf.ByteString data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(byte[] data)
+  public static com.smartparking.grpc.CarEntrance parseFrom(byte[] data)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(
+  public static com.smartparking.grpc.CarEntrance parseFrom(
       byte[] data,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws com.google.protobuf.InvalidProtocolBufferException {
     return PARSER.parseFrom(data, extensionRegistry);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(java.io.InputStream input)
+  public static com.smartparking.grpc.CarEntrance parseFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(
+  public static com.smartparking.grpc.CarEntrance parseFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.smartparking.grpc.Ticket parseDelimitedFrom(java.io.InputStream input)
+  public static com.smartparking.grpc.CarEntrance parseDelimitedFrom(java.io.InputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input);
   }
-  public static com.smartparking.grpc.Ticket parseDelimitedFrom(
+  public static com.smartparking.grpc.CarEntrance parseDelimitedFrom(
       java.io.InputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(
+  public static com.smartparking.grpc.CarEntrance parseFrom(
       com.google.protobuf.CodedInputStream input)
       throws java.io.IOException {
     return com.google.protobuf.GeneratedMessageV3
         .parseWithIOException(PARSER, input);
   }
-  public static com.smartparking.grpc.Ticket parseFrom(
+  public static com.smartparking.grpc.CarEntrance parseFrom(
       com.google.protobuf.CodedInputStream input,
       com.google.protobuf.ExtensionRegistryLite extensionRegistry)
       throws java.io.IOException {
@@ -408,7 +306,7 @@ private static final long serialVersionUID = 0L;
   public static Builder newBuilder() {
     return DEFAULT_INSTANCE.toBuilder();
   }
-  public static Builder newBuilder(com.smartparking.grpc.Ticket prototype) {
+  public static Builder newBuilder(com.smartparking.grpc.CarEntrance prototype) {
     return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
   }
   @java.lang.Override
@@ -424,26 +322,26 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
-   * Protobuf type {@code ParkingSystem.Ticket}
+   * Protobuf type {@code ParkingSystem.CarEntrance}
    */
   public static final class Builder extends
       com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
-      // @@protoc_insertion_point(builder_implements:ParkingSystem.Ticket)
-      com.smartparking.grpc.TicketOrBuilder {
+      // @@protoc_insertion_point(builder_implements:ParkingSystem.CarEntrance)
+      com.smartparking.grpc.CarEntranceOrBuilder {
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Ticket_descriptor;
+      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarEntrance_descriptor;
     }
 
     @java.lang.Override
     protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Ticket_fieldAccessorTable
+      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarEntrance_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
-              com.smartparking.grpc.Ticket.class, com.smartparking.grpc.Ticket.Builder.class);
+              com.smartparking.grpc.CarEntrance.class, com.smartparking.grpc.CarEntrance.Builder.class);
     }
 
-    // Construct using com.smartparking.grpc.Ticket.newBuilder()
+    // Construct using com.smartparking.grpc.CarEntrance.newBuilder()
     private Builder() {
       maybeForceBuilderInitialization();
     }
@@ -465,27 +363,23 @@ private static final long serialVersionUID = 0L;
 
       checkin_ = "";
 
-      checkout_ = "";
-
-      price_ = "";
-
       return this;
     }
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.Descriptor
         getDescriptorForType() {
-      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_Ticket_descriptor;
+      return com.smartparking.grpc.ParkingSystemServiceImpl.internal_static_ParkingSystem_CarEntrance_descriptor;
     }
 
     @java.lang.Override
-    public com.smartparking.grpc.Ticket getDefaultInstanceForType() {
-      return com.smartparking.grpc.Ticket.getDefaultInstance();
+    public com.smartparking.grpc.CarEntrance getDefaultInstanceForType() {
+      return com.smartparking.grpc.CarEntrance.getDefaultInstance();
     }
 
     @java.lang.Override
-    public com.smartparking.grpc.Ticket build() {
-      com.smartparking.grpc.Ticket result = buildPartial();
+    public com.smartparking.grpc.CarEntrance build() {
+      com.smartparking.grpc.CarEntrance result = buildPartial();
       if (!result.isInitialized()) {
         throw newUninitializedMessageException(result);
       }
@@ -493,12 +387,10 @@ private static final long serialVersionUID = 0L;
     }
 
     @java.lang.Override
-    public com.smartparking.grpc.Ticket buildPartial() {
-      com.smartparking.grpc.Ticket result = new com.smartparking.grpc.Ticket(this);
+    public com.smartparking.grpc.CarEntrance buildPartial() {
+      com.smartparking.grpc.CarEntrance result = new com.smartparking.grpc.CarEntrance(this);
       result.licensePlate_ = licensePlate_;
       result.checkin_ = checkin_;
-      result.checkout_ = checkout_;
-      result.price_ = price_;
       onBuilt();
       return result;
     }
@@ -537,30 +429,22 @@ private static final long serialVersionUID = 0L;
     }
     @java.lang.Override
     public Builder mergeFrom(com.google.protobuf.Message other) {
-      if (other instanceof com.smartparking.grpc.Ticket) {
-        return mergeFrom((com.smartparking.grpc.Ticket)other);
+      if (other instanceof com.smartparking.grpc.CarEntrance) {
+        return mergeFrom((com.smartparking.grpc.CarEntrance)other);
       } else {
         super.mergeFrom(other);
         return this;
       }
     }
 
-    public Builder mergeFrom(com.smartparking.grpc.Ticket other) {
-      if (other == com.smartparking.grpc.Ticket.getDefaultInstance()) return this;
+    public Builder mergeFrom(com.smartparking.grpc.CarEntrance other) {
+      if (other == com.smartparking.grpc.CarEntrance.getDefaultInstance()) return this;
       if (!other.getLicensePlate().isEmpty()) {
         licensePlate_ = other.licensePlate_;
         onChanged();
       }
       if (!other.getCheckin().isEmpty()) {
         checkin_ = other.checkin_;
-        onChanged();
-      }
-      if (!other.getCheckout().isEmpty()) {
-        checkout_ = other.checkout_;
-        onChanged();
-      }
-      if (!other.getPrice().isEmpty()) {
-        price_ = other.price_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -578,11 +462,11 @@ private static final long serialVersionUID = 0L;
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
-      com.smartparking.grpc.Ticket parsedMessage = null;
+      com.smartparking.grpc.CarEntrance parsedMessage = null;
       try {
         parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        parsedMessage = (com.smartparking.grpc.Ticket) e.getUnfinishedMessage();
+        parsedMessage = (com.smartparking.grpc.CarEntrance) e.getUnfinishedMessage();
         throw e.unwrapIOException();
       } finally {
         if (parsedMessage != null) {
@@ -729,144 +613,6 @@ private static final long serialVersionUID = 0L;
       onChanged();
       return this;
     }
-
-    private java.lang.Object checkout_ = "";
-    /**
-     * <code>string checkout = 3;</code>
-     */
-    public java.lang.String getCheckout() {
-      java.lang.Object ref = checkout_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        checkout_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string checkout = 3;</code>
-     */
-    public com.google.protobuf.ByteString
-        getCheckoutBytes() {
-      java.lang.Object ref = checkout_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        checkout_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string checkout = 3;</code>
-     */
-    public Builder setCheckout(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      checkout_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string checkout = 3;</code>
-     */
-    public Builder clearCheckout() {
-      
-      checkout_ = getDefaultInstance().getCheckout();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string checkout = 3;</code>
-     */
-    public Builder setCheckoutBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      checkout_ = value;
-      onChanged();
-      return this;
-    }
-
-    private java.lang.Object price_ = "";
-    /**
-     * <code>string price = 4;</code>
-     */
-    public java.lang.String getPrice() {
-      java.lang.Object ref = price_;
-      if (!(ref instanceof java.lang.String)) {
-        com.google.protobuf.ByteString bs =
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        price_ = s;
-        return s;
-      } else {
-        return (java.lang.String) ref;
-      }
-    }
-    /**
-     * <code>string price = 4;</code>
-     */
-    public com.google.protobuf.ByteString
-        getPriceBytes() {
-      java.lang.Object ref = price_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        price_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    /**
-     * <code>string price = 4;</code>
-     */
-    public Builder setPrice(
-        java.lang.String value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  
-      price_ = value;
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string price = 4;</code>
-     */
-    public Builder clearPrice() {
-      
-      price_ = getDefaultInstance().getPrice();
-      onChanged();
-      return this;
-    }
-    /**
-     * <code>string price = 4;</code>
-     */
-    public Builder setPriceBytes(
-        com.google.protobuf.ByteString value) {
-      if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-      
-      price_ = value;
-      onChanged();
-      return this;
-    }
     @java.lang.Override
     public final Builder setUnknownFields(
         final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -880,41 +626,41 @@ private static final long serialVersionUID = 0L;
     }
 
 
-    // @@protoc_insertion_point(builder_scope:ParkingSystem.Ticket)
+    // @@protoc_insertion_point(builder_scope:ParkingSystem.CarEntrance)
   }
 
-  // @@protoc_insertion_point(class_scope:ParkingSystem.Ticket)
-  private static final com.smartparking.grpc.Ticket DEFAULT_INSTANCE;
+  // @@protoc_insertion_point(class_scope:ParkingSystem.CarEntrance)
+  private static final com.smartparking.grpc.CarEntrance DEFAULT_INSTANCE;
   static {
-    DEFAULT_INSTANCE = new com.smartparking.grpc.Ticket();
+    DEFAULT_INSTANCE = new com.smartparking.grpc.CarEntrance();
   }
 
-  public static com.smartparking.grpc.Ticket getDefaultInstance() {
+  public static com.smartparking.grpc.CarEntrance getDefaultInstance() {
     return DEFAULT_INSTANCE;
   }
 
-  private static final com.google.protobuf.Parser<Ticket>
-      PARSER = new com.google.protobuf.AbstractParser<Ticket>() {
+  private static final com.google.protobuf.Parser<CarEntrance>
+      PARSER = new com.google.protobuf.AbstractParser<CarEntrance>() {
     @java.lang.Override
-    public Ticket parsePartialFrom(
+    public CarEntrance parsePartialFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
-      return new Ticket(input, extensionRegistry);
+      return new CarEntrance(input, extensionRegistry);
     }
   };
 
-  public static com.google.protobuf.Parser<Ticket> parser() {
+  public static com.google.protobuf.Parser<CarEntrance> parser() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.google.protobuf.Parser<Ticket> getParserForType() {
+  public com.google.protobuf.Parser<CarEntrance> getParserForType() {
     return PARSER;
   }
 
   @java.lang.Override
-  public com.smartparking.grpc.Ticket getDefaultInstanceForType() {
+  public com.smartparking.grpc.CarEntrance getDefaultInstanceForType() {
     return DEFAULT_INSTANCE;
   }
 
