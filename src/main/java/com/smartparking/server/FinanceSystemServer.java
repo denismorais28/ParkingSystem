@@ -5,17 +5,17 @@ import io.grpc.ServerBuilder;
 
 import java.io.IOException;
 
-public class ParkingSystemServer {
+public class FinanceSystemServer {
 
     public static void main(String[] args) {
         // Create a gRPC server and start it
         try {
-            Server server = ServerBuilder.forPort(8081)
-                    .addService(new ParkingManagedServiceImpl())
+            Server server = ServerBuilder.forPort(8083)
+                    .addService(new FinanceSystemServiceImpl())
                     .build();
 
             server.start();
-            System.out.println("Parking System Server started on port 8081");
+            System.out.println("Finance System Server started on portS 8083");
 
             // Block until the server is terminated
             server.awaitTermination();
