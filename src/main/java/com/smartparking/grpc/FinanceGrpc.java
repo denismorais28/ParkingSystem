@@ -6,7 +6,7 @@ import static io.grpc.MethodDescriptor.generateFullMethodName;
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.61.1)",
-    comments = "Source: ParkingSystem.proto")
+    comments = "Source: FinanceSystem.proto")
 @io.grpc.stub.annotations.GrpcGenerated
 public final class FinanceGrpc {
 
@@ -536,7 +536,7 @@ public final class FinanceGrpc {
 
     @java.lang.Override
     public com.google.protobuf.Descriptors.FileDescriptor getFileDescriptor() {
-      return com.smartparking.grpc.ParkingSystemServiceImpl.getDescriptor();
+      return com.smartparking.grpc.FinanceSystemServiceImpl.getDescriptor();
     }
 
     @java.lang.Override

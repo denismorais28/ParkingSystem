@@ -6,7 +6,11 @@ import io.grpc.stub.StreamObserver;
 public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
     @Override
     public void payment(Ticket request, StreamObserver<Ticket> responseObserver) {
-        super.payment(request, responseObserver);
+        Ticket ticket = Ticket.newBuilder().setPrice("200.00").build();
+
+        responseObserver.onNext(ticket);
+        responseObserver.onCompleted();
+        //super.payment(request, responseObserver);
     }
 
     @Override

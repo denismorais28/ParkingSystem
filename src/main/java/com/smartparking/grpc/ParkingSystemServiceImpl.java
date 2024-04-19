@@ -85,16 +85,8 @@ public final class ParkingSystemServiceImpl {
       "sure\022\026.ParkingSystem.Request\032\031.ParkingSy" +
       "stem.FinanceDay\"\000\022=\n\006report\022\026.ParkingSys" +
       "tem.Request\032\031.ParkingSystem.FinanceDay\"\000" +
-      "2\320\002\n\007Finance\0229\n\007payment\022\025.ParkingSystem." +
-      "Ticket\032\025.ParkingSystem.Ticket\"\000\022G\n\025addCa" +
-      "rToPaymentRecord\022\025.ParkingSystem.Ticket\032" +
-      "\025.ParkingSystem.Ticket\"\000\022I\n\023PaymentRecor" +
-      "dReport\022\025.ParkingSystem.Empety\032\031.Parking" +
-      "System.FinanceDay\"\000\022=\n\007closure\022\025.Parking" +
-      "System.Empety\032\031.ParkingSystem.FinanceDay" +
-      "\"\000\0227\n\004open\022\026.ParkingSystem.Parking\032\025.Par" +
-      "kingSystem.Empety\"\000B3\n\025com.smartparking." +
-      "grpcB\030ParkingSystemServiceImplP\001b\006proto3"
+      "B3\n\025com.smartparking.grpcB\030ParkingSystem" +
+      "ServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

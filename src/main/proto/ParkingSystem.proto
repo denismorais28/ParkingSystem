@@ -31,21 +31,6 @@ service ParkingManaged {
 
 }
 
-
-
-service Finance{
-
-  rpc payment(Ticket) returns (Ticket) { }
-
-  rpc addCarToPaymentRecord(Ticket) returns (Ticket) { }
-
-  rpc PaymentRecordReport(Empety) returns (FinanceDay) { }
-
-  rpc closure(Empety) returns (FinanceDay) { }
-
-  rpc open(Parking) returns (Empety) { }
-
-}
 message Empety{
 }
 
