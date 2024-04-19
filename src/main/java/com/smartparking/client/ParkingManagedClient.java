@@ -25,6 +25,7 @@ public class ParkingManagedClient {
             if (option == 1){
                 openParking(channel,scanner);
             }
+
         }while (option != 99 );
 
     }
