@@ -219,6 +219,9 @@ public final class FinanceGrpc {
   public interface AsyncService {
 
     /**
+     * <pre>
+     *Adiciona no ticket o valor
+     * </pre>
      */
     default void payment(com.smartparking.grpc.Ticket request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket> responseObserver) {
@@ -226,6 +229,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Gravar histórico de carro de ticket do valor
+     * </pre>
      */
     default void addCarToPaymentRecord(com.smartparking.grpc.Ticket request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket> responseObserver) {
@@ -233,6 +239,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Devolver relatorio quantitativo do dia
+     * </pre>
      */
     default void paymentRecordReport(com.smartparking.grpc.Empety request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.FinanceDay> responseObserver) {
@@ -240,6 +249,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *fechar caixa
+     * </pre>
      */
     default void closure(com.smartparking.grpc.Empety request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.FinanceDay> responseObserver) {
@@ -247,6 +259,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Abrir caixa
+     * </pre>
      */
     default void open(com.smartparking.grpc.Parking request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.Empety> responseObserver) {
@@ -282,6 +297,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Adiciona no ticket o valor
+     * </pre>
      */
     public void payment(com.smartparking.grpc.Ticket request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket> responseObserver) {
@@ -290,6 +308,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Gravar histórico de carro de ticket do valor
+     * </pre>
      */
     public void addCarToPaymentRecord(com.smartparking.grpc.Ticket request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket> responseObserver) {
@@ -298,6 +319,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Devolver relatorio quantitativo do dia
+     * </pre>
      */
     public void paymentRecordReport(com.smartparking.grpc.Empety request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.FinanceDay> responseObserver) {
@@ -306,6 +330,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *fechar caixa
+     * </pre>
      */
     public void closure(com.smartparking.grpc.Empety request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.FinanceDay> responseObserver) {
@@ -314,6 +341,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Abrir caixa
+     * </pre>
      */
     public void open(com.smartparking.grpc.Parking request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.Empety> responseObserver) {
@@ -339,6 +369,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Adiciona no ticket o valor
+     * </pre>
      */
     public com.smartparking.grpc.Ticket payment(com.smartparking.grpc.Ticket request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -346,6 +379,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Gravar histórico de carro de ticket do valor
+     * </pre>
      */
     public com.smartparking.grpc.Ticket addCarToPaymentRecord(com.smartparking.grpc.Ticket request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -353,6 +389,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Devolver relatorio quantitativo do dia
+     * </pre>
      */
     public com.smartparking.grpc.FinanceDay paymentRecordReport(com.smartparking.grpc.Empety request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -360,6 +399,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *fechar caixa
+     * </pre>
      */
     public com.smartparking.grpc.FinanceDay closure(com.smartparking.grpc.Empety request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -367,6 +409,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Abrir caixa
+     * </pre>
      */
     public com.smartparking.grpc.Empety open(com.smartparking.grpc.Parking request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
@@ -391,6 +436,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Adiciona no ticket o valor
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.smartparking.grpc.Ticket> payment(
         com.smartparking.grpc.Ticket request) {
@@ -399,6 +447,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Gravar histórico de carro de ticket do valor
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.smartparking.grpc.Ticket> addCarToPaymentRecord(
         com.smartparking.grpc.Ticket request) {
@@ -407,6 +458,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Devolver relatorio quantitativo do dia
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.smartparking.grpc.FinanceDay> paymentRecordReport(
         com.smartparking.grpc.Empety request) {
@@ -415,6 +469,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *fechar caixa
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.smartparking.grpc.FinanceDay> closure(
         com.smartparking.grpc.Empety request) {
@@ -423,6 +480,9 @@ public final class FinanceGrpc {
     }
 
     /**
+     * <pre>
+     *Abrir caixa
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.smartparking.grpc.Empety> open(
         com.smartparking.grpc.Parking request) {
