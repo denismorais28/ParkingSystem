@@ -15,10 +15,10 @@ service VancancyManagement {
   rpc vancancyCheckIn(CarEntrance) returns (Ticket) {}
 
   //Informa que esta desocupando uma vaga
-  rpc vancancyCheckOut(Ticket) returns (Ticket) {}
+  rpc vancancyCheckOut(TicketRequestCheckout) returns (Ticket) {}
 
   //Informa se nao ha vaga no estacionamento
-  rpc vancancyCheckIfItIsFull(Status) returns (Ticket) {}
+  rpc vancancyCheckIfItIsFull(empty) returns (Status) {}
 }
 
 message Ticket{
@@ -37,4 +37,11 @@ message CarEntrance{
   string licensePlate = 1;
 }
 
+message TicketRequestCheckout{
+  string idTicket = 1;
+}
+
+message empty{
+
+}
 

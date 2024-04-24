@@ -1,17 +1,48 @@
 package com.smartparking;
 
+import com.google.type.DateTime;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.Period;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+    public static void main(String[] args) throws ParseException {
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        String strDateCheckin =  "Tue Mar 23 09:50:55 BRT 2024";
+        String strDateCheckout =  "Tue Apr 23 10:50:55 BRT 2024";
+        SimpleDateFormat sdf = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy", Locale.ENGLISH);
+
+        Date parsedDateCheckin = sdf.parse(strDateCheckin);
+        Date parsedDateCheckout = sdf.parse( strDateCheckout);
+
+        Calendar dateCheckin = Calendar.getInstance();
+        Calendar dateCheckout = Calendar.getInstance();
+        dateCheckin.setTime(parsedDateCheckin);
+        dateCheckout.setTime(parsedDateCheckout);
+        int d = dateCheckout.get(Calendar.DATE) - dateCheckin.get(Calendar.DATE) ;
+
+        if (d == 0){
+            int hour = dateCheckout.get(Calendar.HOUR) - dateCheckin.get(Calendar.HOUR);
+            int minute = dateCheckout.get(Calendar.MINUTE) - dateCheckin.get(Calendar.MINUTE);
+            System.out.println("Hour: "+hour+" Minute " + minute);
+            if (minute < 0){
+                hour--;
+                minute = 60 + minute;
+                System.out.println("Hour: "+hour+" Minute " + minute);
+            }
         }
-    }
+        System.out.println(d);
+
+
+        }
+
 }

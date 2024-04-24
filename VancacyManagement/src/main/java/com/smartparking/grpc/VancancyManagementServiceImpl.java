@@ -29,6 +29,16 @@ public final class VancancyManagementServiceImpl {
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_ParkingSystem_CarEntrance_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParkingSystem_TicketRequestCheckout_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParkingSystem_TicketRequestCheckout_fieldAccessorTable;
+  static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_ParkingSystem_empty_descriptor;
+  static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_ParkingSystem_empty_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -44,15 +54,16 @@ public final class VancancyManagementServiceImpl {
       "idTicket\030\001 \001(\t\022\024\n\014licensePlate\030\002 \001(\t\022\017\n\007" +
       "checkin\030\003 \001(\t\022\020\n\010checkout\030\004 \001(\t\022\r\n\005price" +
       "\030\005 \001(\001\"\030\n\006Status\022\016\n\006status\030\001 \001(\t\"#\n\013CarE" +
-      "ntrance\022\024\n\014licensePlate\030\001 \001(\t2\353\001\n\022Vancan" +
-      "cyManagement\022F\n\017vancancyCheckIn\022\032.Parkin" +
-      "gSystem.CarEntrance\032\025.ParkingSystem.Tick" +
-      "et\"\000\022B\n\020vancancyCheckOut\022\025.ParkingSystem" +
-      ".Ticket\032\025.ParkingSystem.Ticket\"\000\022I\n\027vanc" +
-      "ancyCheckIfItIsFull\022\025.ParkingSystem.Stat" +
-      "us\032\025.ParkingSystem.Ticket\"\000B8\n\025com.smart" +
-      "parking.grpcB\035VancancyManagementServiceI" +
-      "mplP\001b\006proto3"
+      "ntrance\022\024\n\014licensePlate\030\001 \001(\t\")\n\025TicketR" +
+      "equestCheckout\022\020\n\010idTicket\030\001 \001(\t\"\007\n\005empt" +
+      "y2\371\001\n\022VancancyManagement\022F\n\017vancancyChec" +
+      "kIn\022\032.ParkingSystem.CarEntrance\032\025.Parkin" +
+      "gSystem.Ticket\"\000\022Q\n\020vancancyCheckOut\022$.P" +
+      "arkingSystem.TicketRequestCheckout\032\025.Par" +
+      "kingSystem.Ticket\"\000\022H\n\027vancancyCheckIfIt" +
+      "IsFull\022\024.ParkingSystem.empty\032\025.ParkingSy" +
+      "stem.Status\"\000B8\n\025com.smartparking.grpcB\035" +
+      "VancancyManagementServiceImplP\001b\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -86,6 +97,18 @@ public final class VancancyManagementServiceImpl {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_ParkingSystem_CarEntrance_descriptor,
         new java.lang.String[] { "LicensePlate", });
+    internal_static_ParkingSystem_TicketRequestCheckout_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_ParkingSystem_TicketRequestCheckout_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParkingSystem_TicketRequestCheckout_descriptor,
+        new java.lang.String[] { "IdTicket", });
+    internal_static_ParkingSystem_empty_descriptor =
+      getDescriptor().getMessageTypes().get(4);
+    internal_static_ParkingSystem_empty_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_ParkingSystem_empty_descriptor,
+        new java.lang.String[] { });
     com.google.protobuf.DurationProto.getDescriptor();
     com.google.protobuf.TimestampProto.getDescriptor();
   }

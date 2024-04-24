@@ -46,27 +46,27 @@ public final class VancancyManagementGrpc {
     return getVancancyCheckInMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.smartparking.grpc.Ticket,
+  private static volatile io.grpc.MethodDescriptor<com.smartparking.grpc.TicketRequestCheckout,
       com.smartparking.grpc.Ticket> getVancancyCheckOutMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "vancancyCheckOut",
-      requestType = com.smartparking.grpc.Ticket.class,
+      requestType = com.smartparking.grpc.TicketRequestCheckout.class,
       responseType = com.smartparking.grpc.Ticket.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.smartparking.grpc.Ticket,
+  public static io.grpc.MethodDescriptor<com.smartparking.grpc.TicketRequestCheckout,
       com.smartparking.grpc.Ticket> getVancancyCheckOutMethod() {
-    io.grpc.MethodDescriptor<com.smartparking.grpc.Ticket, com.smartparking.grpc.Ticket> getVancancyCheckOutMethod;
+    io.grpc.MethodDescriptor<com.smartparking.grpc.TicketRequestCheckout, com.smartparking.grpc.Ticket> getVancancyCheckOutMethod;
     if ((getVancancyCheckOutMethod = VancancyManagementGrpc.getVancancyCheckOutMethod) == null) {
       synchronized (VancancyManagementGrpc.class) {
         if ((getVancancyCheckOutMethod = VancancyManagementGrpc.getVancancyCheckOutMethod) == null) {
           VancancyManagementGrpc.getVancancyCheckOutMethod = getVancancyCheckOutMethod =
-              io.grpc.MethodDescriptor.<com.smartparking.grpc.Ticket, com.smartparking.grpc.Ticket>newBuilder()
+              io.grpc.MethodDescriptor.<com.smartparking.grpc.TicketRequestCheckout, com.smartparking.grpc.Ticket>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "vancancyCheckOut"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.smartparking.grpc.Ticket.getDefaultInstance()))
+                  com.smartparking.grpc.TicketRequestCheckout.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.smartparking.grpc.Ticket.getDefaultInstance()))
               .setSchemaDescriptor(new VancancyManagementMethodDescriptorSupplier("vancancyCheckOut"))
@@ -77,29 +77,29 @@ public final class VancancyManagementGrpc {
     return getVancancyCheckOutMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<com.smartparking.grpc.Status,
-      com.smartparking.grpc.Ticket> getVancancyCheckIfItIsFullMethod;
+  private static volatile io.grpc.MethodDescriptor<com.smartparking.grpc.empty,
+      com.smartparking.grpc.Status> getVancancyCheckIfItIsFullMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "vancancyCheckIfItIsFull",
-      requestType = com.smartparking.grpc.Status.class,
-      responseType = com.smartparking.grpc.Ticket.class,
+      requestType = com.smartparking.grpc.empty.class,
+      responseType = com.smartparking.grpc.Status.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<com.smartparking.grpc.Status,
-      com.smartparking.grpc.Ticket> getVancancyCheckIfItIsFullMethod() {
-    io.grpc.MethodDescriptor<com.smartparking.grpc.Status, com.smartparking.grpc.Ticket> getVancancyCheckIfItIsFullMethod;
+  public static io.grpc.MethodDescriptor<com.smartparking.grpc.empty,
+      com.smartparking.grpc.Status> getVancancyCheckIfItIsFullMethod() {
+    io.grpc.MethodDescriptor<com.smartparking.grpc.empty, com.smartparking.grpc.Status> getVancancyCheckIfItIsFullMethod;
     if ((getVancancyCheckIfItIsFullMethod = VancancyManagementGrpc.getVancancyCheckIfItIsFullMethod) == null) {
       synchronized (VancancyManagementGrpc.class) {
         if ((getVancancyCheckIfItIsFullMethod = VancancyManagementGrpc.getVancancyCheckIfItIsFullMethod) == null) {
           VancancyManagementGrpc.getVancancyCheckIfItIsFullMethod = getVancancyCheckIfItIsFullMethod =
-              io.grpc.MethodDescriptor.<com.smartparking.grpc.Status, com.smartparking.grpc.Ticket>newBuilder()
+              io.grpc.MethodDescriptor.<com.smartparking.grpc.empty, com.smartparking.grpc.Status>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "vancancyCheckIfItIsFull"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.smartparking.grpc.Status.getDefaultInstance()))
+                  com.smartparking.grpc.empty.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.smartparking.grpc.Ticket.getDefaultInstance()))
+                  com.smartparking.grpc.Status.getDefaultInstance()))
               .setSchemaDescriptor(new VancancyManagementMethodDescriptorSupplier("vancancyCheckIfItIsFull"))
               .build();
         }
@@ -171,7 +171,7 @@ public final class VancancyManagementGrpc {
      *Informa que esta desocupando uma vaga
      * </pre>
      */
-    default void vancancyCheckOut(com.smartparking.grpc.Ticket request,
+    default void vancancyCheckOut(com.smartparking.grpc.TicketRequestCheckout request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getVancancyCheckOutMethod(), responseObserver);
     }
@@ -181,8 +181,8 @@ public final class VancancyManagementGrpc {
      *Informa se nao ha vaga no estacionamento
      * </pre>
      */
-    default void vancancyCheckIfItIsFull(com.smartparking.grpc.Status request,
-        io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket> responseObserver) {
+    default void vancancyCheckIfItIsFull(com.smartparking.grpc.empty request,
+        io.grpc.stub.StreamObserver<com.smartparking.grpc.Status> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getVancancyCheckIfItIsFullMethod(), responseObserver);
     }
   }
@@ -230,7 +230,7 @@ public final class VancancyManagementGrpc {
      *Informa que esta desocupando uma vaga
      * </pre>
      */
-    public void vancancyCheckOut(com.smartparking.grpc.Ticket request,
+    public void vancancyCheckOut(com.smartparking.grpc.TicketRequestCheckout request,
         io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getVancancyCheckOutMethod(), getCallOptions()), request, responseObserver);
@@ -241,8 +241,8 @@ public final class VancancyManagementGrpc {
      *Informa se nao ha vaga no estacionamento
      * </pre>
      */
-    public void vancancyCheckIfItIsFull(com.smartparking.grpc.Status request,
-        io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket> responseObserver) {
+    public void vancancyCheckIfItIsFull(com.smartparking.grpc.empty request,
+        io.grpc.stub.StreamObserver<com.smartparking.grpc.Status> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getVancancyCheckIfItIsFullMethod(), getCallOptions()), request, responseObserver);
     }
@@ -279,7 +279,7 @@ public final class VancancyManagementGrpc {
      *Informa que esta desocupando uma vaga
      * </pre>
      */
-    public com.smartparking.grpc.Ticket vancancyCheckOut(com.smartparking.grpc.Ticket request) {
+    public com.smartparking.grpc.Ticket vancancyCheckOut(com.smartparking.grpc.TicketRequestCheckout request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getVancancyCheckOutMethod(), getCallOptions(), request);
     }
@@ -289,7 +289,7 @@ public final class VancancyManagementGrpc {
      *Informa se nao ha vaga no estacionamento
      * </pre>
      */
-    public com.smartparking.grpc.Ticket vancancyCheckIfItIsFull(com.smartparking.grpc.Status request) {
+    public com.smartparking.grpc.Status vancancyCheckIfItIsFull(com.smartparking.grpc.empty request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getVancancyCheckIfItIsFullMethod(), getCallOptions(), request);
     }
@@ -328,7 +328,7 @@ public final class VancancyManagementGrpc {
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<com.smartparking.grpc.Ticket> vancancyCheckOut(
-        com.smartparking.grpc.Ticket request) {
+        com.smartparking.grpc.TicketRequestCheckout request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getVancancyCheckOutMethod(), getCallOptions()), request);
     }
@@ -338,8 +338,8 @@ public final class VancancyManagementGrpc {
      *Informa se nao ha vaga no estacionamento
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.smartparking.grpc.Ticket> vancancyCheckIfItIsFull(
-        com.smartparking.grpc.Status request) {
+    public com.google.common.util.concurrent.ListenableFuture<com.smartparking.grpc.Status> vancancyCheckIfItIsFull(
+        com.smartparking.grpc.empty request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getVancancyCheckIfItIsFullMethod(), getCallOptions()), request);
     }
@@ -371,12 +371,12 @@ public final class VancancyManagementGrpc {
               (io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket>) responseObserver);
           break;
         case METHODID_VANCANCY_CHECK_OUT:
-          serviceImpl.vancancyCheckOut((com.smartparking.grpc.Ticket) request,
+          serviceImpl.vancancyCheckOut((com.smartparking.grpc.TicketRequestCheckout) request,
               (io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket>) responseObserver);
           break;
         case METHODID_VANCANCY_CHECK_IF_IT_IS_FULL:
-          serviceImpl.vancancyCheckIfItIsFull((com.smartparking.grpc.Status) request,
-              (io.grpc.stub.StreamObserver<com.smartparking.grpc.Ticket>) responseObserver);
+          serviceImpl.vancancyCheckIfItIsFull((com.smartparking.grpc.empty) request,
+              (io.grpc.stub.StreamObserver<com.smartparking.grpc.Status>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -407,15 +407,15 @@ public final class VancancyManagementGrpc {
           getVancancyCheckOutMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.smartparking.grpc.Ticket,
+              com.smartparking.grpc.TicketRequestCheckout,
               com.smartparking.grpc.Ticket>(
                 service, METHODID_VANCANCY_CHECK_OUT)))
         .addMethod(
           getVancancyCheckIfItIsFullMethod(),
           io.grpc.stub.ServerCalls.asyncUnaryCall(
             new MethodHandlers<
-              com.smartparking.grpc.Status,
-              com.smartparking.grpc.Ticket>(
+              com.smartparking.grpc.empty,
+              com.smartparking.grpc.Status>(
                 service, METHODID_VANCANCY_CHECK_IF_IT_IS_FULL)))
         .build();
   }

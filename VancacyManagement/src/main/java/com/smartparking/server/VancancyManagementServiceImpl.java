@@ -3,10 +3,7 @@ package com.smartparking.server;
 ;
 import com.google.protobuf.TimestampOrBuilder;
 import com.google.type.DateTime;
-import com.smartparking.grpc.CarEntrance;
-import com.smartparking.grpc.Status;
-import com.smartparking.grpc.Ticket;
-import com.smartparking.grpc.VancancyManagementGrpc;
+import com.smartparking.grpc.*;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
 import io.grpc.stub.StreamObserver;
@@ -24,18 +21,23 @@ import java.util.Locale;
 public class VancancyManagementServiceImpl extends VancancyManagementGrpc.VancancyManagementImplBase {
 
     private int totalvacancies;
-    private HashMap<Integer, Ticket> ticketies;
+    private HashMap<String, Ticket> ticketies;
+    private int countId = 0;
 
     public VancancyManagementServiceImpl(){
         totalvacancies = 10;
-        ticketies = new HashMap<Integer, Ticket>();
+        ticketies = new HashMap<String, Ticket>();
     }
 
     @Override
     public void vancancyCheckIn(CarEntrance request, StreamObserver<Ticket> responseObserver) {
         if (ticketies.size() <= totalvacancies){
-            Ticket ticket = Ticket.newBuilder().setCheckin(parseStringTimestamp()).setLicensePlate(request.getLicensePlate()).build();
-            ticketies.put(ticketies.size()+1,ticket);
+            countId++;
+            Ticket ticket = Ticket.newBuilder()
+                        .setIdTicket(Integer.toString(countId))
+                        .setCheckin(parseStringTimestamp())
+                        .setLicensePlate(request.getLicensePlate()).build();
+            ticketies.put(Integer.toString(countId),ticket);
             responseObserver.onNext(ticket);
             responseObserver.onCompleted();
         }
@@ -43,13 +45,28 @@ public class VancancyManagementServiceImpl extends VancancyManagementGrpc.Vancan
     }
 
     @Override
-    public void vancancyCheckOut(Ticket request, StreamObserver<Ticket> responseObserver) {
-        super.vancancyCheckOut(request, responseObserver);
+    public void vancancyCheckOut(TicketRequestCheckout request, StreamObserver<Ticket> responseObserver) {
+        if (ticketies.size() > 0){
+            Ticket ticket = ticketies.get(request.getIdTicket());
+            ticket.newBuilderForType().setCheckout(parseStringTimestamp()).build();
+            ticketies.remove(request.getIdTicket());
+            responseObserver.onNext(ticket);
+            responseObserver.onCompleted();
+        }
+//        super.vancancyCheckOut(request, responseObserver);
     }
 
     @Override
-    public void vancancyCheckIfItIsFull(Status request, StreamObserver<Ticket> responseObserver) {
-        super.vancancyCheckIfItIsFull(request, responseObserver);
+    public void vancancyCheckIfItIsFull(empty request, StreamObserver<Status> responseObserver) {
+        Integer total = totalvacancies - ticketies.size();
+        if(total > 0){
+            responseObserver.onNext(Status.newBuilder().setStatus(total+" vacancies").build());
+            responseObserver.onCompleted();
+        }else {
+            responseObserver.onNext(Status.newBuilder().setStatus("No vacancy").build());
+            responseObserver.onCompleted();
+        }
+//        super.vancancyCheckIfItIsFull(request, responseObserver);
     }
 
     private String parseStringTimestamp() {

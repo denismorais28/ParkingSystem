@@ -7,14 +7,19 @@ package ParkingSystem;
 
 service Finance{
 
+  //Adiciona no ticket o valor
   rpc payment(Ticket) returns (Ticket) { }
 
+  //Gravar histórico de carro de ticket do valor
   rpc addCarToPaymentRecord(Ticket) returns (Ticket) { }
 
+  //Devolver relatorio quantitativo do dia
   rpc PaymentRecordReport(Empety) returns (FinanceDay) { }
 
+  //fechar caixa
   rpc closure(Empety) returns (FinanceDay) { }
 
+  //Abrir caixa
   rpc open(Parking) returns (Empety) { }
 
 }
