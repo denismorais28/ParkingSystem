@@ -12,7 +12,7 @@ mvn clean compile
 ```
 
 
-Run command to go up Server:
+3º Run command to go up Server in terminal separete:
 ``` 
 mvn exec:java -Dexec.mainClass="com.smartparking.server.ParkingSystemServer" 
 ```

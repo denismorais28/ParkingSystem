@@ -12,6 +12,9 @@ import java.util.Locale;
 public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
 
     private boolean parkingOpen = false;
+    private Double priceHourValue = 2.5;
+    private int fraction = 15;
+
 
     @Override
     public void payment(Ticket request, StreamObserver<Ticket> responseObserver) {
@@ -40,12 +43,14 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
 
     @Override
     public void closure(Empety request, StreamObserver<FinanceDay> responseObserver) {
-        super.closure(request, responseObserver);
+        parkingOpen = false;
+        //super.closure(request, responseObserver);
     }
 
     @Override
     public void open(Parking request, StreamObserver<Empety> responseObserver) {
-        super.open(request, responseObserver);
+        parkingOpen = true;
+        //super.open(request, responseObserver);
     }
 
     private Double calcularPreco(Ticket request){
@@ -58,7 +63,7 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
             throw new RuntimeException(e);
         }
 
-        return (timeMinute/15) * 1.5;
+        return (timeMinute/fraction) * priceHourValue;
 
     }
 
@@ -72,7 +77,7 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
         int minute;
 
         if (day == 0){
-            hour = dateCheckout.get(Calendar.HOUR) - dateCheckin.get(Calendar.HOUR);
+            hour = dateCheckout.get(Calendar.HOUR_OF_DAY) - dateCheckin.get(Calendar.HOUR_OF_DAY);
             minute = dateCheckout.get(Calendar.MINUTE) - dateCheckin.get(Calendar.MINUTE);
 
             if (minute < 0){
@@ -82,7 +87,7 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
 
             return (hour*60)+minute;
         }else{
-            hour = dateCheckout.get(Calendar.HOUR) - dateCheckin.get(Calendar.HOUR);
+            hour = dateCheckout.get(Calendar.HOUR_OF_DAY) - dateCheckin.get(Calendar.HOUR_OF_DAY);
             minute = dateCheckout.get(Calendar.MINUTE) - dateCheckin.get(Calendar.MINUTE);
 
             hour += (day*24);

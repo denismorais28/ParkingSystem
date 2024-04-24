@@ -23,6 +23,7 @@ public class VancancyManagementServiceImpl extends VancancyManagementGrpc.Vancan
     private int totalvacancies;
     private HashMap<String, Ticket> ticketies;
     private int countId = 0;
+    private boolean parkingOpen = false;
 
     public VancancyManagementServiceImpl(){
         totalvacancies = 10;
@@ -48,9 +49,15 @@ public class VancancyManagementServiceImpl extends VancancyManagementGrpc.Vancan
     public void vancancyCheckOut(TicketRequestCheckout request, StreamObserver<Ticket> responseObserver) {
         if (ticketies.size() > 0){
             Ticket ticket = ticketies.get(request.getIdTicket());
-            ticket.newBuilderForType().setCheckout(parseStringTimestamp()).build();
+
+            Ticket ticketRespose = Ticket.newBuilder()
+                    .setIdTicket(ticket.getIdTicket())
+                    .setCheckin(ticket.getCheckin())
+                    .setCheckout(parseStringTimestamp())
+                    .setLicensePlate(ticket.getLicensePlate()).build();
+
             ticketies.remove(request.getIdTicket());
-            responseObserver.onNext(ticket);
+            responseObserver.onNext(ticketRespose);
             responseObserver.onCompleted();
         }
 //        super.vancancyCheckOut(request, responseObserver);
