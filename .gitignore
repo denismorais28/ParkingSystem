@@ -36,4 +36,7 @@ build/
 
 ### Mac OS ###
 .DS_Store
+FinanceSystem/src/main/java/com/smartparking/grpc/
+ParkingSystemManagement/src/main/java/com/smartparking/grpc/
+VancacyManagement/src/main/java/com/smartparking/grpc/
 !**/src/main/java/com/smartparking/grpc/**
