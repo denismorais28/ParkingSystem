@@ -19,6 +19,12 @@ service VancancyManagement {
 
   //Informa se nao ha vaga no estacionamento
   rpc vancancyCheckIfItIsFull(empty) returns (Status) {}
+
+
+  rpc closure(Empety) returns (Status) { }
+
+  //Abrir caixa
+  rpc open(Empety) returns (Status) { }
 }
 
 message Ticket{
@@ -28,6 +34,9 @@ message Ticket{
   string checkout = 4;
   string price = 5;
   string msgErro = 6;
+}
+
+message Empety{
 }
 
 message Status{
@@ -45,4 +54,3 @@ message TicketRequestCheckout{
 message empty{
 
 }
-
