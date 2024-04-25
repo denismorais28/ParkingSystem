@@ -11,7 +11,7 @@ public class FinanceSystemServer {
         // Create a gRPC server and start it
         try {
             Server server = ServerBuilder.forPort(8083)
-                    //.addService(new FinanceSystemServiceImpl())
+                    .addService(new FinanceSystemServiceImpl())
                     .build();
 
             server.start();

@@ -1,6 +1,8 @@
 package com.smartparking.server;
 
 import com.smartparking.grpc.*;
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
 import io.grpc.stub.StreamObserver;
 
 import java.text.ParseException;
@@ -14,21 +16,30 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
     private boolean parkingOpen = false;
     private Double priceHourValue = 2.5;
     private int fraction = 15;
-
+    ManagedChannel channelVancancy = ManagedChannelBuilder.forAddress("localhost", 8082)
+            .usePlaintext() // For testing purposes only, do not use in production
+            .build();
+    VancancyManagementGrpc.VancancyManagementBlockingStub blockingStubVancancy = VancancyManagementGrpc.newBlockingStub(channelVancancy);
 
     @Override
     public void payment(Ticket request, StreamObserver<Ticket> responseObserver) {
 
-        if(parkingOpen) {
-            Ticket ticket = Ticket.newBuilder().setPrice(calcularPreco(request).toString()).build();
-            responseObserver.onNext(ticket);
-            responseObserver.onCompleted();
-            //super.payment(request, responseObserver);
-        }else{
-            Ticket ticket = Ticket.newBuilder().setPrice(calcularPreco(request).toString()).build();
-            responseObserver.onNext(ticket);
-            responseObserver.onCompleted();
-        }
+        TicketRequestCheckout t2 = TicketRequestCheckout.newBuilder().setIdTicket("1").build();
+        Ticket t3 = blockingStubVancancy.vancancyCheckOut(t2);
+
+        responseObserver.onNext(t3);
+        responseObserver.onCompleted();
+
+//        if(parkingOpen) {
+//            Ticket ticket = Ticket.newBuilder().setPrice(calcularPreco(request).toString()).build();
+//            responseObserver.onNext(ticket);
+//            responseObserver.onCompleted();
+//            //super.payment(request, responseObserver);
+//        }else{
+//            Ticket ticket = Ticket.newBuilder().setPrice(calcularPreco(request).toString()).build();
+//            responseObserver.onNext(ticket);
+//            responseObserver.onCompleted();
+//        }
     }
 
     @Override
@@ -44,12 +55,19 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
     @Override
     public void closure(Empety request, StreamObserver<FinanceDay> responseObserver) {
         parkingOpen = false;
+        FinanceDay financeDay = FinanceDay.newBuilder().build();
+        responseObserver.onNext(financeDay);
+        responseObserver.onCompleted();
+
         //super.closure(request, responseObserver);
     }
 
     @Override
     public void open(Parking request, StreamObserver<Empety> responseObserver) {
         parkingOpen = true;
+        Empety empty = Empety.newBuilder().build();
+        responseObserver.onNext(empty);
+        responseObserver.onCompleted();
         //super.open(request, responseObserver);
     }
 
@@ -108,4 +126,12 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
 
     }
 
+//    private VancancyManagementGrpc sendMsg(){
+//        try {
+//            return
+//        }finally {
+//
+//        }
+//        return null;
+//    }
 }
