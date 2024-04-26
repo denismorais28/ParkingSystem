@@ -65,7 +65,7 @@ public class ParkingSystemManagementClient {
 
         if(report.getMsgErro() == "") {
             System.out.println("Number of parked vehicles: " + report.getCarQuantity());
-            System.out.println("Revenue collected: $ " + report.getAmount());
+            System.out.println("Revenue collected: E " + report.getAmount());
         }
         System.out.println(report.getMsgErro());
         exitScreen();
@@ -80,9 +80,9 @@ public class ParkingSystemManagementClient {
         if(ticket.getMsgErro() == ""){
             System.out.println("Ticket ID: "+ticket.getIdTicket());
             System.out.println("Checkin Time: "+ticket.getCheckin());
-            System.out.println("Checkin Time: "+ticket.getCheckout());
+            System.out.println("Checkout Time: "+ticket.getCheckout());
             System.out.println("Inform license plate: "+ticket.getLicensePlate());
-            System.out.println("Inform license plate: $ "+ticket.getPrice());
+            System.out.println("Inform price: E "+ticket.getPrice());
         }
 
         System.out.println(ticket.getMsgErro());
@@ -122,7 +122,7 @@ public class ParkingSystemManagementClient {
 
     public static void closeParking() {
         FinanceDay response = parkingManagedBlockingStub.parkingClosure(empety);
-        System.out.println("Cash Expense: " + response.getAmount());
+        System.out.println("Cash Expense: E " + response.getAmount());
         System.out.println("Quantity of cars for the day: " + response.getCarQuantity());
         System.out.println("Parking is Closed");
 

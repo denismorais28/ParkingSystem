@@ -31,5 +31,5 @@ mvn exec:java -pl VancacyManagement -Dexec.mainClass="com.smartparking.server.Va
 
 Client Command Option
 ```
-sudo mvn exec:java -pl ParkingSystemManagement -Dexec.mainClass="com.smartparking.client.ParkingSystemManagementClient"
+mvn exec:java -pl ParkingSystemManagement -Dexec.mainClass="com.smartparking.client.ParkingSystemManagementClient"
 ```
