@@ -7,15 +7,18 @@ import io.grpc.stub.StreamObserver;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
+import java.util.*;
 
 public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
 
     private boolean parkingOpen = false;
     private Double priceHourValue = 2.5;
     private int fraction = 15;
+    private List<Ticket> paymentRecord = new ArrayList<Ticket>();
+    private String STATUS_OPEN = "Parking is Opened";
+    private String STATUS_CLOSE = "Parking is closed";
+    private Empety empety = Empety.newBuilder().build();
+
     ManagedChannel channelVancancy = ManagedChannelBuilder.forAddress("localhost", 8082)
             .usePlaintext() // For testing purposes only, do not use in production
             .build();
@@ -24,68 +27,134 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
     @Override
     public void payment(Ticket request, StreamObserver<Ticket> responseObserver) {
 
-        TicketRequestCheckout t2 = TicketRequestCheckout.newBuilder().setIdTicket("1").build();
-        Ticket t3 = blockingStubVancancy.vancancyCheckOut(t2);
-
-        responseObserver.onNext(t3);
-        responseObserver.onCompleted();
-
-//        if(parkingOpen) {
-//            Ticket ticket = Ticket.newBuilder().setPrice(calcularPreco(request).toString()).build();
-//            responseObserver.onNext(ticket);
-//            responseObserver.onCompleted();
-//            //super.payment(request, responseObserver);
-//        }else{
-//            Ticket ticket = Ticket.newBuilder().setPrice(calcularPreco(request).toString()).build();
-//            responseObserver.onNext(ticket);
-//            responseObserver.onCompleted();
-//        }
+        if(parkingOpen) {
+            Double price = calculatePrice(request);
+            Ticket ticket = Ticket
+                    .newBuilder()
+                    .setPrice(price.toString())
+                    .setCheckin(request.getCheckin())
+                    .setCheckout(request.getCheckout())
+                    .setIdTicket(request.getIdTicket())
+                    .setLicensePlate(request.getLicensePlate())
+                    .build();
+            responseObserver.onNext(ticket);
+            responseObserver.onCompleted();
+            //super.payment(request, responseObserver);
+        }else{
+            Ticket ticket = Ticket.newBuilder().setMsgErro(STATUS_CLOSE).build();
+            responseObserver.onNext(ticket);
+            responseObserver.onCompleted();
+        }
     }
 
     @Override
-    public void addCarToPaymentRecord(Ticket request, StreamObserver<Ticket> responseObserver) {
-        super.addCarToPaymentRecord(request, responseObserver);
+    public void addCarToPaymentRecord(Ticket request, StreamObserver<Status> responseObserver) {
+
+        if(parkingOpen) {
+            paymentRecord.add(request);
+            Status status = Status
+                    .newBuilder().setStatus("OK")
+                    .build();
+            responseObserver.onNext(status);
+            responseObserver.onCompleted();
+            //super.payment(request, responseObserver);
+        }else{
+            Status status = Status
+                    .newBuilder().setStatus("Parking is closed")
+                    .build();
+            paymentRecord.add(request);
+            responseObserver.onNext(status);
+            responseObserver.onCompleted();
+
+        }
+        //super.addCarToPaymentRecord(re
     }
+
 
     @Override
     public void paymentRecordReport(Empety request, StreamObserver<FinanceDay> responseObserver) {
-        super.paymentRecordReport(request, responseObserver);
+        if(parkingOpen) {
+            if (paymentRecord.size() > 0 ) {
+                Double amount = 0.0;
+                for (Ticket p : paymentRecord) {
+                    amount += Double.valueOf(p.getPrice());
+                }
+                FinanceDay financeDay = FinanceDay.newBuilder()
+                        .setAmount(amount.toString())
+                        .setCarQuantity(Integer.toString(paymentRecord.size())).build();
+                responseObserver.onNext(financeDay);
+                responseObserver.onCompleted();
+            }else {
+                FinanceDay financeDay = FinanceDay.newBuilder()
+                        .setMsgErro("There is no payment registered").build();
+                responseObserver.onNext(financeDay);
+                responseObserver.onCompleted();
+            }
+        }else {
+            FinanceDay financeDay = FinanceDay.newBuilder()
+                    .setMsgErro(STATUS_CLOSE).build();
+            responseObserver.onNext(financeDay);
+            responseObserver.onCompleted();
+        }
     }
 
     @Override
     public void closure(Empety request, StreamObserver<FinanceDay> responseObserver) {
-        parkingOpen = false;
-        FinanceDay financeDay = FinanceDay.newBuilder().build();
-        responseObserver.onNext(financeDay);
-        responseObserver.onCompleted();
+        if (parkingOpen) {
+            parkingOpen = false;
+            Double amount = 0.0;
 
-        //super.closure(request, responseObserver);
+            for (Ticket p : paymentRecord) {
+                amount += Double.valueOf(p.getPrice());
+            }
+            blockingStubVancancy.closure(empety);
+
+            FinanceDay financeDay = FinanceDay.newBuilder()
+                    .setAmount(amount.toString())
+                    .setCarQuantity(Integer.toString(paymentRecord.size())).build();
+
+            responseObserver.onNext(financeDay);
+            responseObserver.onCompleted();
+        }else{
+            FinanceDay financeDay = FinanceDay.newBuilder()
+                    .setMsgErro(STATUS_CLOSE).build();
+            responseObserver.onNext(financeDay);
+            responseObserver.onCompleted();
+        }
     }
 
     @Override
-    public void open(Parking request, StreamObserver<Empety> responseObserver) {
-        parkingOpen = true;
-        Empety empty = Empety.newBuilder().build();
-        responseObserver.onNext(empty);
-        responseObserver.onCompleted();
-        //super.open(request, responseObserver);
+    public void open(Empety request, StreamObserver<Status> responseObserver) {
+        if (!parkingOpen) {
+            parkingOpen = true;
+
+            blockingStubVancancy.open(empety);
+            Status empty = Status.newBuilder().setStatus(STATUS_OPEN).build();
+            responseObserver.onNext(empty);
+            responseObserver.onCompleted();
+        }else {
+            Status empty = Status.newBuilder().setStatus(STATUS_OPEN).build();
+            responseObserver.onNext(empty);
+            responseObserver.onCompleted();
+        }
     }
 
-    private Double calcularPreco(Ticket request){
+    private Double calculatePrice(Ticket request){
 
         int timeMinute;
         try {
-            timeMinute = calculaTempoMinutos(request.getCheckin(),request.getCheckout());
+            timeMinute = calculatesTimeMinutes(request.getCheckin(),request.getCheckout());
 
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+        Double result = (double)timeMinute/ (double)fraction;
 
-        return (timeMinute/fraction) * priceHourValue;
+        return result * priceHourValue;
 
     }
 
-    private int calculaTempoMinutos(String strCheckin, String strCheckout) throws ParseException {
+    private int calculatesTimeMinutes(String strCheckin, String strCheckout) throws ParseException {
 
         final Calendar dateCheckin = parseDateString(strCheckin);
         final Calendar dateCheckout = parseDateString(strCheckout);
@@ -126,12 +195,4 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
 
     }
 
-//    private VancancyManagementGrpc sendMsg(){
-//        try {
-//            return
-//        }finally {
-//
-//        }
-//        return null;
-//    }
 }

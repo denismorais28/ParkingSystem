@@ -9,25 +9,22 @@ package ParkingSystem;
 service ParkingManaged {
 
   //Abertura de caixa do estacionamento no dia
-  rpc ParkingOpen(Parking) returns (Empety) { }
+  rpc ParkingOpen(Empety) returns (Status) { }
 
   //Entrada do veiculo -> gera um ticket (Dispara para o serviço VancancyManagement)
   rpc carCheckIn(CarEntrance) returns (Ticket) {  }
 
   //Saida do veiculo -> Pode ser negada se pagamento não tiver sido efetuado (dispara para o serviço VancancyManagement)
-  rpc CarCheckOut(CarExit) returns (Ticket) {  }
+  rpc CarCheckOut(TicketRequestCheckout) returns (Ticket) {  }
 
   //Verificar se esta cheio no serviço VancancyManagement
-  rpc CheckIfItIsFull(Status) returns (Status) {}
-
-  //Pagamento das horas do veiculo
-  rpc CheckOutPaymant(Ticket) returns (Ticket) { }
+  rpc CheckIfItIsFull(Empety) returns (Status) {}
 
   //Fechamento do caixa do estacionamento no dia
-  rpc ParkingClosure(Request) returns (FinanceDay) { }
+  rpc ParkingClosure(Empety) returns (FinanceDay) { }
 
   //Relatorio de entrada e saida de veiculo
-  rpc report(Request) returns (FinanceDay) { }
+  rpc report(Empety) returns (FinanceDay) { }
 
 }
 
@@ -45,19 +42,16 @@ message FinanceDay{
   string msgErro = 3;
 }
 
-message Request{
-  string text = 1;
-}
+
 
 message CarEntrance{
   string licensePlate = 1;
-  string checkin = 2;
 }
 
-message CarExit{
-  string licensePlate = 1;
-  string checkout = 2;
+message TicketRequestCheckout{
+  string idTicket = 1;
 }
+
 
 message Ticket{
   string idTicket = 1;

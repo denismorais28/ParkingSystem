@@ -20,7 +20,7 @@ service Finance{
   rpc closure(Empety) returns (FinanceDay) { }
 
   //Abrir caixa
-  rpc open(Empety) returns (Status) { }
+  rpc open(Parking) returns (Status) { }
 
 }
 message Status{
