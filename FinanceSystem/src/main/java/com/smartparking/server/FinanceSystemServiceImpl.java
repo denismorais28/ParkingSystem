@@ -28,9 +28,10 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
     public void payment(Ticket request, StreamObserver<Ticket> responseObserver) {
 
         if(parkingOpen) {
+            Double price = calculatePrice(request);
             Ticket ticket = Ticket
                     .newBuilder()
-                    .setPrice(calculatePrice(request).toString())
+                    .setPrice(price.toString())
                     .setCheckin(request.getCheckin())
                     .setCheckout(request.getCheckout())
                     .setIdTicket(request.getIdTicket())
@@ -73,13 +74,22 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
     @Override
     public void paymentRecordReport(Empety request, StreamObserver<FinanceDay> responseObserver) {
         if(parkingOpen) {
-            Double amount = 0.0;
-            for (Ticket p : paymentRecord) {
-                amount += Double.valueOf(p.getPrice());
+            if (paymentRecord.size() > 0 ) {
+                Double amount = 0.0;
+                for (Ticket p : paymentRecord) {
+                    amount += Double.valueOf(p.getPrice());
+                }
+                FinanceDay financeDay = FinanceDay.newBuilder()
+                        .setAmount(amount.toString())
+                        .setCarQuantity(Integer.toString(paymentRecord.size())).build();
+                responseObserver.onNext(financeDay);
+                responseObserver.onCompleted();
+            }else {
+                FinanceDay financeDay = FinanceDay.newBuilder()
+                        .setMsgErro("There is no payment registered").build();
+                responseObserver.onNext(financeDay);
+                responseObserver.onCompleted();
             }
-            FinanceDay financeDay = FinanceDay.newBuilder()
-                    .setAmount(amount.toString())
-                    .setCarQuantity(Integer.toString(paymentRecord.size())).build();
         }else {
             FinanceDay financeDay = FinanceDay.newBuilder()
                     .setMsgErro(STATUS_CLOSE).build();
@@ -114,8 +124,8 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
     }
 
     @Override
-    public void open(Parking request, StreamObserver<Status> responseObserver) {
-        if (parkingOpen) {
+    public void open(Empety request, StreamObserver<Status> responseObserver) {
+        if (!parkingOpen) {
             parkingOpen = true;
 
             blockingStubVancancy.open(empety);
@@ -123,7 +133,7 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
             responseObserver.onNext(empty);
             responseObserver.onCompleted();
         }else {
-            Status empty = Status.newBuilder().setStatus(STATUS_CLOSE).build();
+            Status empty = Status.newBuilder().setStatus(STATUS_OPEN).build();
             responseObserver.onNext(empty);
             responseObserver.onCompleted();
         }
@@ -138,8 +148,9 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
         } catch (ParseException e) {
             throw new RuntimeException(e);
         }
+        Double result = (double)timeMinute/ (double)fraction;
 
-        return (timeMinute/fraction) * priceHourValue;
+        return result * priceHourValue;
 
     }
 
@@ -184,12 +195,4 @@ public class FinanceSystemServiceImpl extends FinanceGrpc.FinanceImplBase {
 
     }
 
-//    private VancancyManagementGrpc sendMsg(){
-//        try {
-//            return
-//        }finally {
-//
-//        }
-//        return null;
-//    }
 }

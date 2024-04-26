@@ -132,13 +132,13 @@ public class VancancyManagementServiceImpl extends VancancyManagementGrpc.Vancan
 
     @Override
     public void open(Empety request, StreamObserver<Status> responseObserver) {
-        if (parkingOpen) {
+        if (!parkingOpen) {
             parkingOpen = true;
             Status status = Status.newBuilder().setStatus(STATUS_OPEN).build();
             responseObserver.onNext(status);
             responseObserver.onCompleted();
         }else {
-            Status status = Status.newBuilder().setStatus(STATUS_CLOSE).build();
+            Status status = Status.newBuilder().setStatus(STATUS_OPEN).build();
             responseObserver.onNext(status);
             responseObserver.onCompleted();
         }
@@ -148,7 +148,7 @@ public class VancancyManagementServiceImpl extends VancancyManagementGrpc.Vancan
     public void closure(Empety request, StreamObserver<Status> responseObserver) {
         if (parkingOpen) {
             parkingOpen = false;
-            Status status = Status.newBuilder().setStatus(STATUS_OPEN).build();
+            Status status = Status.newBuilder().setStatus(STATUS_CLOSE).build();
             responseObserver.onNext(status);
             responseObserver.onCompleted();
         }else {
